@@ -19,6 +19,19 @@
     },
     "plugins": ["react", "@typescript-eslint", "prettier"],
     "rules": {
+        "react/jsx-uses-react": "off",
+        "react/react-in-jsx-scope": "off",
+        "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+        "sort-imports": [
+            "warn",
+            {
+                "ignoreCase": false,
+                "ignoreDeclarationSort": false,
+                "ignoreMemberSort": false,
+                "memberSyntaxSortOrder": ["none", "all", "multiple", "single"],
+                "allowSeparatedGroups": false
+            }
+        ],
         "no-use-before-define": "off",
         "import/prefer-default-export": "off",
         "@typescript-eslint/no-use-before-define": ["error", { "endOfLine": "off" }],
