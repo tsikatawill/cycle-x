@@ -30,6 +30,7 @@ export const Slide: FC<Props> = ({slides}) => {
               src={selectedSlide.img}
               className="h-52 mx-auto sm:mx-0 sm:h-80"
               alt={selectedSlide.title}
+              style={{filter: 'drop-shadow(5px 5px 5px #22222226)'}}
             />
           </div>
         </div>
