@@ -1,3 +1,4 @@
+import {getAuth} from 'firebase/auth'
 import {initializeApp} from 'firebase/app'
 
 const firebaseConfig = {
@@ -7,7 +8,8 @@ const firebaseConfig = {
   storageBucket: process.env.REACT_APP_STORAGEBUCKET,
   messagingSenderId: process.env.REACT_APP_MSI,
   appId: process.env.REACT_APP_APPID,
-  measurementId: process.env.REACT_APP_MEASUREID,
+  measurementId: process.env.REACT_APP_MEASUREID
 }
 
 export const app = initializeApp(firebaseConfig)
+export const auth = getAuth(app)
