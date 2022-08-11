@@ -1,0 +1,19 @@
+.feature-card {
+  @apply h-52 bg-white shadow-md shadow-purple-400 overflow-hidden;
+}
+
+.feature-card.portrait {
+  @apply row-span-2 sm:h-auto col-span-2 sm:col-span-1;
+}
+
+.feature-card.landscape {
+  @apply col-span-2;
+}
+
+.feature-card.square .title {
+  @apply max-w-[2rem];
+}
+
+.feature-card.square .text {
+  @apply relative z-20;
+}
