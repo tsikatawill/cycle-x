@@ -5,3 +5,15 @@
 .container {
   @apply px-2 md:px-5 max-w-screen-lg mx-auto;
 }
+
+body {
+  @apply bg-purple-200;
+}
+
+h2.section-title {
+  @apply font-bold text-2xl;
+}
+
+header {
+  background: url(./images/bg1.jpg) center center/cover no-repeat;
+}
