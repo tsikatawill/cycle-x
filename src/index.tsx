@@ -1,6 +1,8 @@
 import './index.css'
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import App from './App'
+import Homepage from './pages/homepage/Homepage'
+import Layout from './components/Layout'
 import {Login} from './pages/login/Login'
 import ProtectedRoutes from './auth/ProtectedRoutes'
 import React from 'react'
@@ -12,7 +14,14 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<Login />} />
-
+        <Route
+          path="/"
+          element={
+            <Layout>
+              <Homepage />
+            </Layout>
+          }
+        />
         <Route element={<ProtectedRoutes />}>
           <Route path="/home" element={<App />} />
         </Route>
