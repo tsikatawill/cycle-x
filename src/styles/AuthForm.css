@@ -1,0 +1,39 @@
+form.auth-form {
+  @apply w-full sm:w-80 h-fit pb-5 bg-white shadow-md shadow-purple-400;
+}
+
+form.auth-form legend {
+  @apply text-center;
+}
+
+form.auth-form legend p {
+  @apply bg-purple-400 text-xl p-2 font-bold text-white mb-2;
+}
+
+form.auth-form legend span {
+  @apply block text-sm font-normal max-w-[15rem] mx-auto;
+}
+
+form.auth-form .input-group .inner {
+  @apply h-10 bg-slate-100 border-2 border-purple-300 flex;
+}
+
+form.auth-form .input-group .inner label {
+  @apply bg-slate-200 text-purple-400 h-full w-10 grid place-content-center cursor-pointer flex-shrink-0;
+}
+
+form.auth-form .input-group .inner input {
+  @apply bg-transparent px-2 w-full focus:outline-none;
+}
+
+form.auth-form .input-group .message {
+  @apply text-xs text-red-700 hidden;
+}
+
+form.auth-form button {
+  @apply text-center bg-purple-400 hover:bg-purple-500 font-semibold text-white duration-150  w-full h-10;
+}
+
+form.auth-form .alt-login {
+  @apply flex items-center gap-2 justify-center hover:bg-slate-200 duration-200 cursor-pointer ease-out h-10;
+}
