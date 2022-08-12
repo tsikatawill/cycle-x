@@ -69,7 +69,7 @@ const AllProductsSection = () => {
               />
             </div>
           ) : (
-            <aside className="nav w-52 absolute md:relative -left-2 bg-white pb-5 flex-shrink-0 shadow-sm md:shadow-none shadow-purple-300">
+            <aside className="nav w-52 absolute md:relative -left-2 bg-white h-fit pb-5 flex-shrink-0 shadow-sm md:shadow-none shadow-purple-300">
               <div className="flex justify-between bg-purple-400 text-white font-bold p-2">
                 <h3>Menu</h3>
 
@@ -134,7 +134,7 @@ const AllProductsSection = () => {
             className={`${
               menuMinimized
                 ? 'grid sm:grid-cols-2 md:grid-cols-3'
-                : 'grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
+                : 'grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
             } gap-5 w-full`}
           >
             <ProductCard
