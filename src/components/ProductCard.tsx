@@ -13,7 +13,7 @@ const ProductCard: FC<Props> = ({image, title, price, type}) => {
     <div
       className={`${
         type === 'latest' ? 'w-64' : 'w-full'
-      } product-card bg-white  h-[23rem] flex-shrink-0`}
+      } product-card bg-white  h-[23rem] flex-shrink-0 shadow-sm shadow-purple-300 hover:shadow-md hover:shadow-purple-400 duration-150 ease-in-out`}
     >
       <div className="inner space-y-4 p-2 sm:p-5">
         <div className="image-wrapper h-52 w-full">
