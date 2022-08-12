@@ -10,7 +10,7 @@ const LatestProductsSection = () => {
       <div className="container py-5">
         <h2 className="section-title">Latest Products</h2>
 
-        <div className="product-cards w-full overflow-auto mt-5">
+        <div className="product-cards w-full overflow-auto mt-5 pb-5">
           <div className="flex gap-5">
             <LatestProductCard
               title="some product"
