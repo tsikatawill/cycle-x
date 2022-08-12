@@ -7,6 +7,7 @@ import {Login} from './pages/login/Login'
 import ProtectedRoutes from './auth/ProtectedRoutes'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import Signup from './pages/signup/Signup'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
@@ -14,6 +15,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="/sign-up" element={<Signup />} />
         <Route
           path="/"
           element={
