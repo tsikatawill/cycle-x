@@ -1,7 +1,5 @@
 import CartItem from './CartItem'
 import {FC} from 'react'
-import {addToCart} from '../slices/cartSlice'
-import {useDispatch} from 'react-redux'
 
 export interface CartItemI {
   amount: number
@@ -23,8 +21,6 @@ export const getTotalItems = (cartItems: CartItemI[]) => {
   return cartItems.reduce((ack, cartItems) => ack + cartItems.amount, 0)
 }
 const Cart: FC<Props> = ({cartItems}) => {
-  const dispatch = useDispatch()
-
   return (
     <div>
       <ul className="space-y-5 list-disc ml-4">

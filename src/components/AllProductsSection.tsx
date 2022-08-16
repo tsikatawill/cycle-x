@@ -1,12 +1,12 @@
 /* eslint-disable multiline-ternary */
 import {FC, useState} from 'react'
 import {HiChevronLeft, HiChevronRight, HiOutlineFilter} from 'react-icons/hi'
+import {CartItemI} from './Cart'
 import {FaArrowsAltH} from 'react-icons/fa'
 import ProductCard from './ProductCard'
 import Products from '../products'
-import {CartItemI} from './Cart'
-import {useDispatch} from 'react-redux'
 import {addToCart} from '../slices/cartSlice'
+import {useDispatch} from 'react-redux'
 
 export interface FilterItemI {
   name: string
@@ -142,9 +142,9 @@ const AllProductsSection = () => {
           <div
             className={`${
               menuMinimized
-                ? 'grid sm:grid-cols-2 md:grid-cols-3'
-                : 'grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
-            } gap-5 w-full`}
+                ? 'grid md:grid-cols-3'
+                : 'grid md:grid-cols-2 lg:grid-cols-3'
+            } gap-5 sm:grid-cols-2 w-full`}
           >
             {Products.map((prod, index) => (
               <ProductCard
