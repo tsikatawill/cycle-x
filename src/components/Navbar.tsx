@@ -1,3 +1,4 @@
+/* eslint-disable multiline-ternary */
 import Cart, {getTotalItems} from './Cart'
 import {FC, useState} from 'react'
 import {
@@ -15,6 +16,7 @@ const Navbar: FC = () => {
   const [showLogout, setShowLogout] = useState(false)
   const [showCart, setShowCart] = useState(false)
   const cartItems = useSelector((state: RootState) => state.cart.value)
+  const User = useSelector((state: RootState) => state.user.value)
   const cartItemCount = getTotalItems(cartItems)
 
   const handleCartClose = () => {
@@ -47,26 +49,28 @@ const Navbar: FC = () => {
             )}
           </div>
 
-          <div className="user-details flex sm:hidden items-center gap-1">
-            <div className="image-wrapper h-12 w-12 bg-white rounded-full"></div>
-            <div className="logout relative">
-              <button
-                className="p-1 hover:bg-slate-900 duration-100 ease-out"
-                onClick={() => setShowLogout(!showLogout)}
-              >
-                <HiChevronDown size={20} />
-              </button>
-              {showLogout && (
-                <p className="bg-white text-black text-sm whitespace-nowrap absolute right-0 -bottom-10 flex items-center gap-2 px-2">
-                  Logout <HiOutlineLogout />
-                </p>
-              )}
+          {User.isLoggedIn ? (
+            <div className="user-details flex items-center gap-1">
+              <div className="image-wrapper h-12 w-12 bg-white rounded-full"></div>
+              <div className="logout relative">
+                <button
+                  className="p-1 hover:bg-slate-900 duration-100 ease-out"
+                  onClick={() => setShowLogout(!showLogout)}
+                >
+                  <HiChevronDown size={20} />
+                </button>
+                {showLogout && (
+                  <p className="bg-white text-black text-sm whitespace-nowrap absolute right-0 -bottom-10 flex items-center gap-2 px-2">
+                    Logout <HiOutlineLogout />
+                  </p>
+                )}
+              </div>
             </div>
-          </div>
-
-          <Link to="/login" className="hidden sm:flex gap-1 items-center">
-            Login <HiOutlineLogin />
-          </Link>
+          ) : (
+            <Link to="/login" className="hidden sm:flex gap-1 items-center">
+              Login <HiOutlineLogin />
+            </Link>
+          )}
         </div>
       </div>
 
