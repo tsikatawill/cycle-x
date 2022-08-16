@@ -1,3 +1,4 @@
+import Cart, {getTotalItems} from './Cart'
 import {FC, useState} from 'react'
 import {
   HiChevronDown,
@@ -5,10 +6,20 @@ import {
   HiOutlineLogout,
   HiOutlineShoppingCart
 } from 'react-icons/hi'
+import Drawer from './Drawer'
 import {Link} from 'react-router-dom'
+import {RootState} from '../store/store'
+import {useSelector} from 'react-redux'
 
 const Navbar: FC = () => {
   const [showLogout, setShowLogout] = useState(false)
+  const [showCart, setShowCart] = useState(false)
+  const cartItems = useSelector((state: RootState) => state.cart.value)
+  const cartItemCount = getTotalItems(cartItems)
+
+  const handleCartClose = () => {
+    setShowCart(false)
+  }
 
   return (
     <nav className="navbar h-20 bg-black text-white">
@@ -24,11 +35,16 @@ const Navbar: FC = () => {
         </div>
 
         <div className="flex gap-8 items-center">
-          <div className="cart-icon relative">
+          <div
+            className="cart-icon relative cursor-pointer"
+            onClick={() => setShowCart(true)}
+          >
             <HiOutlineShoppingCart size={20} />
-            <div className="item-count text-xs text-black grid place-content-center absolute -top-3 -right-3 bg-white rounded-full font-semibold h-5 w-5">
-              20
-            </div>
+            {cartItemCount > 0 && (
+              <div className="item-count text-xs text-black grid place-content-center absolute -top-3 -right-3 bg-white rounded-full font-semibold h-5 w-5">
+                {cartItemCount}
+              </div>
+            )}
           </div>
 
           <div className="user-details flex sm:hidden items-center gap-1">
@@ -53,6 +69,10 @@ const Navbar: FC = () => {
           </Link>
         </div>
       </div>
+
+      <Drawer showMenu={showCart} onClose={handleCartClose}>
+        <Cart cartItems={cartItems} />
+      </Drawer>
     </nav>
   )
 }

@@ -3,6 +3,10 @@ import {FC, useState} from 'react'
 import {HiChevronLeft, HiChevronRight, HiOutlineFilter} from 'react-icons/hi'
 import {FaArrowsAltH} from 'react-icons/fa'
 import ProductCard from './ProductCard'
+import Products from '../products'
+import {CartItemI} from './Cart'
+import {useDispatch} from 'react-redux'
+import {addToCart} from '../slices/cartSlice'
 
 export interface FilterItemI {
   name: string
@@ -53,6 +57,11 @@ const NavToggleBtn: FC<TogglePropsI> = ({
 
 const AllProductsSection = () => {
   const [menuMinimized, setMenuMinimized] = useState(false)
+  const dispatch = useDispatch()
+
+  const handleAddToCart = (clickedItem: CartItemI) => {
+    dispatch(addToCart(clickedItem))
+  }
 
   return (
     <section className="all-products">
@@ -137,42 +146,15 @@ const AllProductsSection = () => {
                 : 'grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
             } gap-5 w-full`}
           >
-            <ProductCard
-              image="some"
-              title="some title"
-              price={59}
-              type="all"
-            />
-            <ProductCard
-              image="some"
-              title="some title"
-              price={59}
-              type="all"
-            />
-            <ProductCard
-              image="some"
-              title="some title"
-              price={59}
-              type="all"
-            />
-            <ProductCard
-              image="some"
-              title="some title"
-              price={59}
-              type="all"
-            />
-            <ProductCard
-              image="some"
-              title="some title"
-              price={59}
-              type="all"
-            />
-            <ProductCard
-              image="some"
-              title="some title"
-              price={59}
-              type="all"
-            />
+            {Products.map((prod, index) => (
+              <ProductCard
+                key={index}
+                item={prod}
+                handleAddToCart={() => {
+                  handleAddToCart(prod)
+                }}
+              />
+            ))}
           </div>
         </div>
       </div>

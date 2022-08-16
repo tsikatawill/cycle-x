@@ -59,7 +59,7 @@ const Signup: FC = () => {
         </div>
       </div>
 
-      <div className="container grid place-content-center py-16 sm:py-0">
+      <div className="container grid place-content-center h-screen sm:h-fit py-16 sm:py-0">
         <AuthForm title="Create a free Account" onSubmit={registerUser}>
           <div className="p-5 space-y-5">
             <div className="input-group">

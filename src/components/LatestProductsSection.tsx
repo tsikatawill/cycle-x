@@ -1,10 +1,17 @@
 import LatestProductCard from './ProductCard'
-import Prod from '../images/cycle1.webp'
-import Prod2 from '../images/part5.webp'
-import Prod3 from '../images/part4.webp'
-import Prod4 from '../images/part3.webp'
+import Products from '../products'
+import {CartItemI} from './Cart'
+import {useDispatch} from 'react-redux'
+import {addToCart} from '../slices/cartSlice'
 
 const LatestProductsSection = () => {
+  const latest = Products.filter((item) => item.type === 'latest')
+  const dispatch = useDispatch()
+
+  const handleAddToCart = (clickedItem: CartItemI) => {
+    dispatch(addToCart(clickedItem))
+  }
+
   return (
     <section className="latest-products">
       <div className="container py-5">
@@ -12,36 +19,13 @@ const LatestProductsSection = () => {
 
         <div className="product-cards w-full overflow-auto mt-5 pb-5">
           <div className="flex gap-5">
-            <LatestProductCard
-              title="some product"
-              image={Prod}
-              price={99.99}
-              type="latest"
-            />
-            <LatestProductCard
-              title="some product"
-              image={Prod4}
-              price={99.99}
-              type="latest"
-            />
-            <LatestProductCard
-              title="some product"
-              image={Prod3}
-              price={99.99}
-              type="latest"
-            />
-            <LatestProductCard
-              title="some product"
-              image={Prod2}
-              price={99.99}
-              type="latest"
-            />
-            <LatestProductCard
-              title="some product"
-              image={Prod}
-              price={99.99}
-              type="latest"
-            />
+            {latest.map((prod, index) => (
+              <LatestProductCard
+                key={index}
+                item={prod}
+                handleAddToCart={() => handleAddToCart(prod)}
+              />
+            ))}
           </div>
         </div>
       </div>

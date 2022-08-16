@@ -1,14 +1,22 @@
+import {CartItemI} from './Cart'
 import {FC} from 'react'
 import {HiOutlineShoppingCart} from 'react-icons/hi'
 
-interface Props {
+export interface ProductI {
   image: string
   title: string
   price: number
   type: 'latest' | 'all'
 }
 
-const ProductCard: FC<Props> = ({image, title, price, type}) => {
+type Props = {
+  item: CartItemI
+  handleAddToCart: (clickedItem: CartItemI) => void
+}
+
+const ProductCard: FC<Props> = ({item, handleAddToCart}) => {
+  const {image, title, price, type} = item
+
   return (
     <div
       className={`${
@@ -20,7 +28,7 @@ const ProductCard: FC<Props> = ({image, title, price, type}) => {
           <img
             src={image}
             alt={title}
-            className="h-full w-full object-cover mx-auto"
+            className="h-full w-full object-coer mx-auto"
           />
         </div>
 
@@ -29,7 +37,10 @@ const ProductCard: FC<Props> = ({image, title, price, type}) => {
 
           <div className="flex justify-between items-center">
             <p className="price">${price}</p>
-            <div className="add-to-cart h-8 w-8 grid place-content-center rounded-full cursor-pointer hover:bg-purple-300">
+            <div
+              className="add-to-cart h-8 w-8 grid place-content-center rounded-full cursor-pointer hover:bg-purple-300"
+              onClick={() => handleAddToCart(item)}
+            >
               <HiOutlineShoppingCart size={20} className="cursor-pointer" />
             </div>
           </div>
